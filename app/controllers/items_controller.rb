@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
+  skip_before_action :verify_authenticity_token
 
   # GET /items
   # GET /items.json
@@ -56,8 +57,8 @@ class ItemsController < ApplicationController
   def destroy
     @item.destroy
     respond_to do |format|
-      # format.html { redirect_to items_url, notice: 'Item was successfully destroyed.' }
-      # format.json { head :no_content }
+      format.html { redirect_to items_url, notice: 'Item was successfully destroyed.' }
+      format.json { head :no_content }
       format.js   { render :layout => false }
     end
   end
