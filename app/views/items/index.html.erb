@@ -16,7 +16,8 @@
         <td><%= item.name %></td>
         <td><%= link_to 'Show', item %></td>
         <td><%= link_to 'Edit', edit_item_path(item) %></td>
-        <td class="destroy">Destroy</td>
+        <td><%= link_to 'Destroy', item_path(item), method: :delete %> </td>
+        <td class="destroy">Destroy with ajax</td>
       </tr>
     <% end %>
   </tbody>

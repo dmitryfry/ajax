@@ -15,28 +15,7 @@
 //= require_tree .
 //= require jquery
 
-// function loadDoc() {
-//   var xhttp = new XMLHttpRequest();
-//   xhttp.onreadystatechange = function() {
-//       document.getElementsByClass("destroy")
-//   };
-//   xhttp.open("DELETE", true);
-//   xhttp.send();
-// }
-
-// $(document).ready(function){
-//   $(.classname').on('click'; function(){
-//     $.ajax({
-//       url: 'URL',
-//       type: 'METHOD',
-//       success: function(r){
-//
-//       }
-//     });
-//   });
-// });
-
-$(document).ready(function(){
+function bindAllDocReadyThings(){
   $('.destroy').on('click', function(){
     $.ajax({
       url: '/items/' + this.parentElement.id,
@@ -46,4 +25,8 @@ $(document).ready(function(){
       }
     });
   });
-});
+}
+
+$( document ).on('turbolinks:load', function() {
+  bindAllDocReadyThings();
+})
